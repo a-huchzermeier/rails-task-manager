@@ -1,0 +1,19 @@
+<div class = "container">
+  <h1><%= @task.title %></h1>
+
+  <p>Details: <%= @task.details %></p>
+
+  <p>
+    <input type="checkbox" disabled <%= "checked" if @task.completed? %>>
+    <%= @task.completed? ? "This task is completed" : "This task is not completed yet" %>
+  </p>
+
+  <button><%= link_to "Back to list", tasks_path %></button>
+
+  <button><%= link_to "Edit entry", edit_task_path(@task) %></button>
+
+  <button><%= link_to "Delete",
+    task_path(@task),
+    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+  %></button>
+</div>
